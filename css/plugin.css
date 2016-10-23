@@ -1,0 +1,602 @@
+/* Tiny Scrollbar */
+#scrollbar1 {
+    position: relative;
+}
+
+#scrollbar1 .viewport {
+    height: 380px;
+    overflow: hidden;
+    position: relative;
+    text-align: justify;
+}
+
+#scrollbar1 .overview {
+    list-style: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#scrollbar1 .scrollbar {
+    background: #588fc7;
+    position: relative;
+    background-position: 0 0;
+    /*float: right;*/
+    width: 15px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#scrollbar1 .track {
+    background: transparent url(../images/bg-scrollbar-trackend-y.png) no-repeat 0 100%;
+    height: 100%;
+    width: 13px;
+    position: relative;
+    padding: 0 1px;
+}
+
+#scrollbar1 .thumb {
+    background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 100%;
+    height: 20px;
+    width: 25px;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: -5px;
+}
+
+#scrollbar1 .thumb .end {
+    background: transparent url(../images/bg-scrollbar-thumb-y.png) no-repeat 50% 0;
+    overflow: hidden;
+    height: 5px;
+    width: 25px;
+}
+
+#scrollbar1 .disable {
+    display: none;
+}
+
+.noSelect {
+    user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
+
+
+/*
+    ColorBox Core Style:
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none;}
+.cboxIframe{width:100%; height:100%; display:block; border:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box;}
+
+#cboxOverlay{}
+#colorbox{}
+#cboxTopLeft{width:21px; height:21px; }
+#cboxTopRight{width:21px; height:21px; }
+#cboxBottomLeft{width:21px; height:21px; }
+#cboxBottomRight{width:21px; height:21px; }
+#cboxMiddleLeft{width:21px; }
+#cboxMiddleRight{width:21px; }
+#cboxTopCenter{height:21px; }
+#cboxBottomCenter{height:21px; }
+#cboxContent{background:#fff; overflow:hidden;}
+.cboxIframe{background:#fff;}
+#cboxError{padding:50px; border:1px solid #ccc;}
+#cboxLoadedContent{margin-bottom:28px;}
+#cboxTitle{position:absolute; bottom:4px; left:0; text-align:center; width:100%; color:#949494;}
+#cboxCurrent{position:absolute; bottom:4px; left:58px; color:#949494;}
+#cboxSlideshow{position:absolute; bottom:4px; right:30px; color:#0092ef;}
+#cboxPrevious{position:absolute; bottom:0; left:0; width:25px; height:25px; text-indent:-9999px;}
+#cboxPrevious:hover{}
+#cboxNext{position:absolute; bottom:0; left:27px; width:25px; height:25px; text-indent:-9999px;}
+#cboxNext:hover{}
+#cboxLoadingOverlay{}
+#cboxLoadingGraphic{}
+#cboxClose{position:absolute; bottom:0; right:0; width:25px; height:25px; text-indent:-9999px;}
+#cboxClose:hover{}
+/*
+  The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
+  when an alpha filter (opacity change) is set on the element or ancestor element.  This style is not applied to or needed in IE9.
+*/
+.cboxIE #cboxTopLeft,
+.cboxIE #cboxTopCenter,
+.cboxIE #cboxTopRight,
+.cboxIE #cboxBottomLeft,
+.cboxIE #cboxBottomCenter,
+.cboxIE #cboxBottomRight,
+.cboxIE #cboxMiddleLeft,
+.cboxIE #cboxMiddleRight {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
+}
+/*  The following provides PNG transparency support for IE6 */
+.cboxIE6 #cboxTopLeft{}
+.cboxIE6 #cboxTopCenter{}
+.cboxIE6 #cboxTopRight{}
+.cboxIE6 #cboxBottomLeft{}
+.cboxIE6 #cboxBottomCenter{}
+.cboxIE6 #cboxBottomRight{}
+.cboxIE6 #cboxMiddleLeft{}
+.cboxIE6 #cboxMiddleRight{}
+.cboxIE6 #cboxTopLeft,
+.cboxIE6 #cboxTopCenter,
+.cboxIE6 #cboxTopRight,
+.cboxIE6 #cboxBottomLeft,
+.cboxIE6 #cboxBottomCenter,
+.cboxIE6 #cboxBottomRight,
+.cboxIE6 #cboxMiddleLeft,
+.cboxIE6 #cboxMiddleRight {
+    _behavior: expression(this.src = this.src ? this.src : this.currentStyle.backgroundImage.split('"')[1], this.style.background = "none", this.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src=" + this.src + ", sizingMethod='scale')");
+}
+
+
+.tal {
+  display: block;
+  margin: 6px 0;
+  font-size: 16px;
+  font-style: italic;
+  color: #444;
+}
+.fnt.titTxtMys{
+    margin-bottom:5px; 
+}
+.titTxtMys h1{
+    font-size:1.5em; 
+}
+h1.fnt{
+    font-size:1.1em;
+}
+.wp-pagenavi .first,.wp-pagenavi .last,.btn-join{
+    display:none;
+}
+#closeboxs {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background: url("../images/ico_comfortIovy.png") no-repeat -411px -316px;
+  width: 38px;
+  height: 38px;
+  text-indent: -9999px;
+  border: none;
+  display: block;
+  z-index: 99999999;
+}
+.hide-btn button#cboxClose{
+    display:none;
+}
+.mnRgs {
+	padding: 20px 0!important;
+}
+#image-tool-page {
+	width: 1000px;
+	height: 500px;
+}
+
+.clear {
+	clear:both;
+}
+#workspace {
+	width: 500px;
+	float: left;
+	overflow: hidden;
+}
+
+#topbar {
+	position: fixed;
+	bottom: 40px;
+	right: 40px;
+	z-index: 99998;
+}
+
+#logo {
+	margin: 0;
+	border-bottom: 1px solid #35393e;
+	padding: 6px 0 5px 15px;
+	margin-bottom: 30px;
+}
+
+#logo a {
+	width: 48px;
+	height: 48px;
+	text-indent: -9999px;
+	display: block;
+	background: url(logo-dark.png);
+}
+
+#sidebar {
+	width: 500px;
+	overflow: auto;
+	float: left;
+}
+
+#sidebar .message{
+	padding: 0 20px;
+}
+
+#sidebar .tab {
+	display: none;
+}
+
+#sidebar .tab.active {
+	display: block;
+}
+#block-holder {
+	margin: 20px auto 0;
+	width: 500px;
+	height: 500px;
+	z-index: 9999;
+	overflow: hidden;
+	position: relative;
+}
+
+#block-holder .item {
+	z-index: 8;
+	width: 500px;
+	position: absolute;
+}
+
+#block-holder .item img {
+	max-width: 100%;
+}
+
+#block-holder .icon {
+	z-index: 10;
+	position: absolute;
+	left: 0;
+	top: 0;
+	box-shadow: none;
+}
+
+#block-holder .icon .remove {
+	position: absolute;
+	top: -20px;
+	right: -20px;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	line-height: 20px;
+	font-size: 14px;
+	cursor: pointer;
+	display: none;
+	text-indent: -9999px;
+	background: transparent url('../img/btn-close.png') top right no-repeat;
+	overflow: hidden;
+}
+
+#block-holder .icon .ui-rotatable-handle {
+	position: absolute;
+	bottom: -20px;
+	right: -20px;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	line-height: 20px;
+	font-size: 14px;
+	cursor: pointer;
+	display: none;
+	text-indent: -9999px;
+	background: transparent url('../img/btn-rotate.png') bottom right no-repeat;
+	overflow: hidden;
+}
+
+#block-holder .icon:hover .remove,
+#block-holder .icon:hover .ui-rotatable-handle {
+	display: block;
+}
+#block-holder .icon img{
+	box-shadow: none;
+	width: 100%;
+}
+#sidebar table, #sidebar tr td {
+	border: none;
+	padding: 0;
+}
+#sidebar .content {
+	float: left;
+	background: transparent;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	cursor: pointer;
+}
+
+#sidebar .content img,#sidebar .content canvas{
+	width: 170px;
+	height: 170px;
+	margin: 40px;
+	height: auto;
+}
+
+
+#sidebar .icons .content img {
+	box-shadow: none;
+	width: 40px;
+	margin: 10px 40px;
+}
+
+#sidebar .icons #message-label {
+	display: block;
+	height: 21px;
+	width: 298px;
+	margin-bottom: 0.5em;
+	background: transparent url('../img/text-form.png') no-repeat;
+
+}
+#sidebar .icons #message {
+	width: 95%;
+	border: 1px dashed #007dde;
+	padding: 1%;
+	border-radius: 20px;
+	outline: none;
+}
+.content.ui-draggable-dragging {
+	max-width: 100px;
+	max-height: 100px;
+	z-index: 99999;
+	cursor: move;
+}
+
+.active
+{
+	cursor: move;
+}
+
+#image-holder {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 500px;
+	height: 500px;
+}
+#image-holder.hover  {
+	opacity: 0.5;
+    background: lightblue;
+    z-index: 7;
+}
+
+#image-processed.hover {
+	opacity: 0.7;
+    z-index: 7;
+}
+
+/* jQuery UI */
+
+
+#block-holder .icon .ui-resizable-handle {
+	position: absolute;
+	font-size: 0.1px;
+	display: none!important;
+	-ms-touch-action: none;
+	touch-action: none;
+	width: 7px;
+	height: 7px;
+	background: #333;
+}
+
+#block-holder .icon:hover .ui-resizable-handle {
+	display: block!important;
+}
+
+#block-holder .icon .ui-resizable-se {
+	cursor: se-resize;
+	right: 0;
+	bottom: 0;
+}
+#block-holder .icon .ui-resizable-sw {
+	cursor: sw-resize;
+	left: 0;
+	bottom: 0;
+}
+#block-holder .icon .ui-resizable-nw {
+	cursor: nw-resize;
+	left: 0;
+	top: 0;
+}
+#block-holder .icon .ui-resizable-ne {
+	cursor: ne-resize;
+	right: 0;
+	top: 0;
+}
+
+/* Matrix 3d */
+.box {
+  margin: 20px;
+  padding: 10px;
+  height: 150px;
+  width: 500px;
+  border: 1px solid black;
+}
+
+
+/*Button*/
+#footer {
+	margin-top: 1em;
+	text-align: center;
+}
+
+#footer .wp-pagenavi {
+	display: inline-block;
+}
+#btn-continue {
+	display: inline-block;
+	width: 167px;
+	height: 39px;
+	text-indent: -9999px;
+	background-image: url('../img/btn-cont.png');
+	background-repeat: no-repeat;
+	outline: none;
+}
+
+#btn-join {
+	display: inline-block;
+	width: 187px;
+	height: 39px;
+	text-indent: -9999px;
+	background-image: url('../img/btn-join.png');
+	background-repeat: no-repeat;
+	outline: none;
+}
+
+#btn-return {
+	margin-right: 2em;
+	display: inline-block;
+	width: 167px;
+	height: 39px;
+	text-indent: -9999px;
+	background-image: url('../img/btn-return.png');
+	background-repeat: no-repeat;
+	outline: none;
+}
+
+.progress-bar-box {
+	width: 100%;
+	text-align: center;
+}
+#progress-bar {
+	width: 514px;
+	height: 37px;
+	display: inline-block;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-image: url('../img/process-bar-0.png');
+}
+
+#images-listing .rb-col-4 {
+	width: 33.3333%;
+	float: left;
+	position: relative;
+	margin-top: 10px;
+        margin-bottom:15px; 
+}
+
+
+#images-listing .rb-col-4 .inner {
+	text-align:left;
+        width:58%;
+        margin:0 auto;
+}
+
+
+#images-listing .rb-col-4 img.du-thi-image {
+	width: 150px;
+}
+
+#image-form {
+	display: none;
+}
+
+#dwmc-crop {
+	z-index: 9999;
+}
+
+#cboxContent .cropper-invisible {
+	display: none;
+}
+
+#cboxContent #cboxTitle {
+	display: none;
+}
+
+#cboxClose:hover {
+	background-position: -411px -316px!important;
+}
+
+#dwmc-crop {
+	position: absolute;
+	z-index: 99999;
+	right: 10px;
+	bottom: 10px;
+}
+/*#cboxLoadedContent:has(.success-message) {
+	background: transparent;
+}*/
+#cboxLoadedContent .success-message {
+	background: white;
+	text-align: center;
+	border-radius: 5px;
+	border: 1px dashed;
+	color: #007dde;
+	font-size: 24px;
+	width: 720px;
+}
+
+#cboxLoadedContent .success-message .inner {
+	height: 120px;
+	padding: 30px 40px;
+}
+/* Effect 6: Pie Timer from Anders Grimsrud http://codepen.io/agrimsrud/pen/EmCoa */
+
+.la-anim-6 svg {
+
+	position: fixed;
+
+	top: 50%;
+
+	left: 50%;
+
+	z-index: -1;
+
+	display: block;
+
+	width: 500px;
+
+	height: 500px;
+
+	-webkit-transform: translateX(-50%) translateY(-50%);
+
+	transform: translateX(-50%) translateY(-50%);
+
+	pointer-events: none;
+
+}
+
+
+
+.la-anim-6.la-animate svg {
+
+	z-index: 100;
+
+}
+
+
+
+#la-anim-6-loader { 
+
+	fill: #fff; 
+
+	fill-opacity: 0.7; 
+
+}
+
+
+
+#la-anim-6-border { 
+
+	fill: #007dde; 
+
+	fill-opacity: 0.5;
+
+}
+h1.du-thi-h1{
+    margin:5px 0 10px 0;
+}
+.phan-trang{
+    width:38%;
+    text-align:center; 
+    margin:0 auto;
+}
+
